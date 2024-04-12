@@ -96,7 +96,7 @@ stages:
                 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName -ErrorAction SilentlyContinue
                 if (-not $webApp) {
                     # Create the web app if it doesn't exist
-                    New-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName -Location 'northeurope' -SKU $sku
+                    New-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName -Location 'northeurope' -sku $sku
                 }
               azurePowerShellVersion: 'LatestVersion'
 
