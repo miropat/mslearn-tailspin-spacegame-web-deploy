@@ -2,7 +2,6 @@ trigger:
 - '*'
 
 variables:
-  buildConfiguration: 'Release'
   resourceGroupName: 'tailspin'
   webAppName: 'tailspin-webapp'
 
