@@ -4,6 +4,7 @@ trigger:
 variables:
   resourceGroupName: 'tailspin'
   webAppName: 'tailspin-webapp'
+  sku: 'F1'
 
 stages:
 - stage: 'Build'
@@ -89,12 +90,13 @@ stages:
               Inline: |
                 $resourceGroupName = "$(resourceGroupName)"
                 $webAppName = "$(webAppName)"
+                $SKU = "$(sku)"
                 
                 # Check if the web app exists
                 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName -ErrorAction SilentlyContinue
                 if (-not $webApp) {
                     # Create the web app if it doesn't exist
-                    New-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName -Location 'your-location' -AppServicePlan 'your-app-service-plan-name'
+                    New-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName -Location 'northeurope' -SKU $sku
                 }
               azurePowerShellVersion: 'LatestVersion'
 
